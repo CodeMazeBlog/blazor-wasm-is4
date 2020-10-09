@@ -1,0 +1,33 @@
+@page "/fetchdata"
+@attribute [Authorize]
+
+<h1>Companies</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (_companies == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Address (F)</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var company in _companies)
+			{
+				<tr>
+					<td>@company.Id</td>
+					<td>@company.Name</td>
+					<td>@company.FullAddress</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
