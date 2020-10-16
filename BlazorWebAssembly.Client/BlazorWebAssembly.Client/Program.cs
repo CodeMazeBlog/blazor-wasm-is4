@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using BlazorWebAssembly.Client.MessageHandler;
+using BlazorWebAssembly.Client.ClaimsPrincipalFactory;
 
 namespace BlazorWebAssembly.Client
 {
@@ -36,7 +37,9 @@ namespace BlazorWebAssembly.Client
 			builder.Services.AddOidcAuthentication(options =>
 			{
 				builder.Configuration.Bind("oidc", options.ProviderOptions);
-			});
+				options.UserOptions.RoleClaim = "role";
+			})
+			.AddAccountClaimsPrincipalFactory<MultipleRoleClaimsPrincipalFactory<RemoteUserAccount>>();
 
 			await builder.Build().RunAsync();
 		}

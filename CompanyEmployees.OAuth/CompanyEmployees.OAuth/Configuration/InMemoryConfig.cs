@@ -47,6 +47,7 @@ namespace CompanyEmployees.OAuth.Configuration
 					  new Claim("family_name", "Mining"),
 					  new Claim("address", "Sunny Street 4"),
 					  new Claim("role", "Admin"),
+					  new Claim("role", "Manager"),
 					  new Claim("position", "Administrator"),
 					  new Claim("country", "USA")
 				  }

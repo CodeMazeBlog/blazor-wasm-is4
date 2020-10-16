@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CompanyEmployees.Controllers
 {
@@ -47,5 +48,14 @@ namespace CompanyEmployees.Controllers
         [HttpGet("unauthorized")]
         public IActionResult UnauthorizedTestAction() => 
             Ok(new { Message = "Access is allowed for unauthorized users" });
+
+        [HttpGet("Privacy")]
+        [Authorize(Roles = "Admin")]
+        public IEnumerable<string> Privacy()
+        {
+            var claims = User.Claims.Select(c => $"{c.Type}: {c.Value}").ToList();
+
+            return claims;
+        }
     }
 }
