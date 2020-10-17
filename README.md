@@ -1,3 +1,3 @@
-# Blazor WebAssembly Role-Based Security with IdentityServer4
-##https://code-maze.com/blazor-webassembly-role-based-security-with-identityserver4
-This repo contains the source code for the "Blazor WebAssembly Role-Based Security with IdentityServer4" article on Code Maze.
+# Attribute-Based Access Control with Blazor WebAssembly and IdentityServer4
+##https://code-maze.com/atribute-based-access-control-blazor-webassembly-identityserver4
+This repo contains the source code for the "Attribute-Based Access Control with Blazor WebAssembly and IdentityServer4" article on Code Maze.

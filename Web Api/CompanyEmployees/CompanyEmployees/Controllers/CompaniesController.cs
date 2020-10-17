@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SharedProject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace CompanyEmployees.Controllers
             Ok(new { Message = "Access is allowed for unauthorized users" });
 
         [HttpGet("Privacy")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Policy = Policy.CountryAndJobPosition)]
         public IEnumerable<string> Privacy()
         {
             var claims = User.Claims.Select(c => $"{c.Type}: {c.Value}").ToList();

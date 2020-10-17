@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using BlazorWebAssembly.Client.MessageHandler;
 using BlazorWebAssembly.Client.ClaimsPrincipalFactory;
+using SharedProject;
 
 namespace BlazorWebAssembly.Client
 {
@@ -40,6 +41,13 @@ namespace BlazorWebAssembly.Client
 				options.UserOptions.RoleClaim = "role";
 			})
 			.AddAccountClaimsPrincipalFactory<MultipleRoleClaimsPrincipalFactory<RemoteUserAccount>>();
+
+			builder.Services.AddAuthorizationCore(opt =>
+			{
+				opt.AddPolicy(
+					Policy.CountryAndJobPosition,
+					Policy.CountryAndJobPositionPolicy());
+			});
 
 			await builder.Build().RunAsync();
 		}

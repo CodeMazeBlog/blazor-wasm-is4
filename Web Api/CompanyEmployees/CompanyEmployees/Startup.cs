@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
+using SharedProject;
 using System.IO;
 
 namespace CompanyEmployees
@@ -30,6 +31,13 @@ namespace CompanyEmployees
 			services.ConfigureSqlContext(Configuration);
 			services.ConfigureRepositoryManager();
 			services.AddAutoMapper(typeof(Startup));
+
+			services.AddAuthorization(opt =>
+			{
+				opt.AddPolicy(
+					Policy.CountryAndJobPosition,
+					Policy.CountryAndJobPositionPolicy());
+			});
 
 			services.AddAuthentication("Bearer")
 				.AddJwtBearer("Bearer", opt =>

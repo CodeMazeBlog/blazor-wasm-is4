@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BlazorWebAssembly.Client.Pages
 {
 	public partial class Privacy
-	{
+	{ 
 		[Inject]
 		public HttpClient HttpClient { get; set; }
 

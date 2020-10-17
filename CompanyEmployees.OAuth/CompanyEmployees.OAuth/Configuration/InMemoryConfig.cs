@@ -112,7 +112,9 @@ namespace CompanyEmployees.OAuth.Configuration
 				   {
 					   IdentityServerConstants.StandardScopes.OpenId,
 					   IdentityServerConstants.StandardScopes.Profile,
-					   "companyApi"
+					   "companyApi",
+					   "position",
+					   "country"
 				   },
 				   RedirectUris = { "https://localhost:5020/authentication/login-callback" },
 				   PostLogoutRedirectUris = { "https://localhost:5020/authentication/logout-callback" }
